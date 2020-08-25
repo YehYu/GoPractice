@@ -18,6 +18,15 @@ func cmd(a, b int, add addFunc) int {
 	return add(a, b)
 }
 
+func addmore(numbers ...int) (sum int) { //傳入值是不定的，可以用 ... 來表示
+	sum = 0
+	for _, num := range numbers { // numbers 型態會是 Slice []int ，所以可以用 for range 走訪
+		sum += num
+	}
+
+	return
+}
+
 func main() {
 	var add2 addFunc
 	//匿名函式
@@ -33,4 +42,8 @@ func main() {
 	})) // 3
 	fmt.Println(reflect.TypeOf(add))  // func(int, int) int
 	fmt.Println(reflect.TypeOf(add2)) // func(int, int) int
+
+	sum := addmore(1, 2, 3, 4, 5)
+
+	fmt.Println(sum) // 15
 }
