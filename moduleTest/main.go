@@ -5,7 +5,7 @@ import (
 	"os"
 	"strconv"
 
-	"./provider"
+	"github.com/YehYu/GoPractice/moduleTest/provider"
 	"github.com/urfave/cli" // imports as package "cli"
 )
 
