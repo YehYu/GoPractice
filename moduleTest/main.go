@@ -17,13 +17,13 @@ func main() {
 	app.Run(os.Args)
 }
 
-func commands() []cli.Command {
-	return []cli.Command{
+func commands() []*cli.Command {
+	return []*cli.Command{
 		{
 			Name:  "generate",
 			Usage: "產生假名",
 			Flags: []cli.Flag{
-				cli.StringFlag{
+				&cli.StringFlag{
 					Name:  "num",
 					Value: "10",
 					Usage: "產生數量",
