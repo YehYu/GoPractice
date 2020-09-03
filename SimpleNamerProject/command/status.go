@@ -3,22 +3,15 @@ package command
 import (
 	"fmt"
 	"io/ioutil"
-	"os"
 
 	"github.com/urfave/cli" // imports as package "cli"
+	"os"
 )
 
 var (
 	StatusCommand = cli.Command{
 		Name:  "status",
 		Usage: "狀態",
-		Flags: []cli.Flag{
-			cli.StringFlag{
-				Name:  "namefile",
-				Value: "name.yml",
-				Usage: "名字庫",
-			},
-		},
 		Action: func(c *cli.Context) error {
 			return getNames(c)
 		},
@@ -27,7 +20,7 @@ var (
 
 func getNames(c *cli.Context) error {
 	os.Chdir(".")
-	rc, _ := ioutil.ReadFile(c.String("namefile"))
+	rc, _ := ioutil.ReadFile(c.GlobalString("namefile"))
 	fmt.Printf("%s", rc)
 	return nil
 }

@@ -2,6 +2,7 @@ package command
 
 import (
 	"fmt"
+	"os"
 	"strconv"
 
 	"github.com/YehYu/GoPractice/SimpleNamerProject/provider"
@@ -34,9 +35,10 @@ func generate(c *cli.Context) error {
 	}
 
 	fmt.Println("Generate " + strconv.Itoa(num))
-
+	os.Chdir(".")
+	ns, _ := provider.GetNames(c.GlobalString("namefile"))
 	generator := provider.Create()
-
+	generator.Names = ns
 	for i := 0; i < num; i++ {
 		fmt.Println(generator.Name())
 	}
